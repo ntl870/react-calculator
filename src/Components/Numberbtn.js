@@ -35,6 +35,7 @@ const Numberbtn = (props) => {
             type="button"
             className="operator btn"
             value="*"
+            onClick={props.multiply}
           >
             &times;
           </button>
@@ -43,6 +44,7 @@ const Numberbtn = (props) => {
             type="button"
             className="operator btn"
             value="/"
+            onClick={props.divide}
           >
             &divide;
           </button>
