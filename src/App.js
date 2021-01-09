@@ -4,8 +4,8 @@ import Numberbtn from "./Components/Numberbtn";
 
 class App extends Component {
   state = {
-    temp: '',
-    ans: '',
+    temp: 0,
+    ans: 0,
     operating: true,
     plus: false,
     subtract: false,
@@ -16,6 +16,10 @@ class App extends Component {
   multiplyCount = 0;
   divideCount = 0;
   AnsTemp = [];
+  operatorPlusStyle = "btn btn-warning";
+  operatorSubtractStyle = "btn btn-warning";
+  operatorMultiplyStyle = "btn btn-warning";
+  operatorDivideStyle = "btn btn-warning";
 
   getInput = (e) => {
     let ButtonValue = e.target.value;
@@ -67,17 +71,15 @@ class App extends Component {
 
   operatorMultiply = () => {
     let tempState = this.state;
-    if (this.multiplyCount === 0) {
-      // tempState.ans = Number(tempState.temp);
-      this.multiplyCount++;
-    } else {
-      if(Number(tempState.temp) === 0){
-        tempState.temp = 1;
-      }
-      tempState.ans = Number(tempState.ans) * Number(tempState.temp);
+    if (tempState.temp === 0) {
+      tempState.temp = 1;
     }
+    if (tempState.ans === 0) {
+      tempState.ans = 1;
+    }
+    tempState.ans = Number(tempState.ans) * Number(tempState.temp);
     this.AnsTemp = [];
-    tempState.temp = [];
+    tempState.temp = 0;
     tempState.operating = false;
     tempState.multiply = true;
     tempState.plus = false;
@@ -90,18 +92,16 @@ class App extends Component {
 
   operatorDivide = () => {
     let tempState = this.state;
-    if (this.divideCount === 0) {
+    if (tempState.temp === 0) {
+      tempState.temp = 1;
+    }
+    if (tempState.ans === 0) {
       tempState.ans = Number(tempState.temp);
-      this.multiplyCount++;
     } else {
-      if (Number(tempState.temp) === 0) {
-        tempState.ans = "Error: Divide by 0";
-      } else {
-        tempState.ans = Number(tempState.ans) / Number(tempState.temp);
-      }
+      tempState.ans = Number(tempState.ans) / Number(tempState.temp);
     }
     this.AnsTemp = [];
-    tempState.temp = [];
+    tempState.temp = 1;
     tempState.operating = false;
     tempState.multiply = false;
     tempState.plus = false;
@@ -122,8 +122,7 @@ class App extends Component {
       this.setState({
         tempState,
       });
-    }
-    else if (this.state.subtract) {
+    } else if (this.state.subtract) {
       tempState.ans -= Number(tempState.temp);
       tempState.temp = 0;
       tempState.subtract = false;
@@ -131,18 +130,20 @@ class App extends Component {
       this.setState({
         tempState,
       });
-    }
-    else if (this.state.multiply) {
+    } else if (this.state.multiply) {
       tempState.ans *= Number(tempState.temp);
-      tempState.temp = 1;
+      tempState.temp = 0;
       tempState.multiply = false;
       tempState.operating = false;
       this.setState({
         tempState,
       });
-    }
-    else if (this.state.divide) {
-      tempState.ans /= Number(tempState.temp);
+    } else if (this.state.divide) {
+      if (tempState.ans === 0) {
+        tempState.ans = Number(tempState.temp);
+      } else {
+        tempState.ans = Number(tempState.ans) / Number(tempState.temp);
+      }
       tempState.temp = 1;
       tempState.divide = false;
       tempState.operating = false;
@@ -154,6 +155,30 @@ class App extends Component {
 
   render() {
     console.log(this.state);
+    if (this.state.plus === true && this.state.operating === false) {
+      this.operatorPlusStyle = "operator btn btn-success";
+    } else {
+      this.operatorPlusStyle = "operator btn btn-warning";
+    }
+
+    if (this.state.subtract === true && this.state.operating === false) {
+      this.operatorSubtractStyle = "operator btn btn-success";
+    } else {
+      this.operatorSubtractStyle = "operator btn btn-warning";
+    }
+
+    if (this.state.multiply === true && this.state.operating === false) {
+      this.operatorMultiplyStyle = "operator btn btn-success";
+    } else {
+      this.operatorMultiplyStyle = "operator btn btn-warning";
+    }
+
+    if (this.state.divide === true && this.state.operating === false) {
+      this.operatorDivideStyle = "operator btn btn-success";
+    } else {
+      this.operatorDivideStyle = "operator btn btn-warning";
+    }
+
     if (this.state.operating) {
       return (
         <div className="App">
@@ -165,6 +190,10 @@ class App extends Component {
             subtract={this.operatorSubtract}
             multiply={this.operatorMultiply}
             divide={this.operatorDivide}
+            btnPlusStyle={this.operatorPlusStyle}
+            btnSubtractStyle={this.operatorSubtractStyle}
+            btnMultiplyStyle={this.operatorMultiplyStyle}
+            btnDivideStyle={this.operatorDivideStyle}
           />
         </div>
       );
@@ -179,6 +208,10 @@ class App extends Component {
             subtract={this.operatorSubtract}
             multiply={this.operatorMultiply}
             divide={this.operatorDivide}
+            btnPlusStyle={this.operatorPlusStyle}
+            btnSubtractStyle={this.operatorSubtractStyle}
+            btnMultiplyStyle={this.operatorMultiplyStyle}
+            btnDivideStyle={this.operatorDivideStyle}
           />
         </div>
       );

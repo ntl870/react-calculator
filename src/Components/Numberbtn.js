@@ -1,5 +1,6 @@
 import "./Numberbtn.css";
 import React from "react";
+
 const Numberbtn = (props) => {
   return (
     <div className="Numberbtn">
@@ -15,7 +16,7 @@ const Numberbtn = (props) => {
           <button
             id="math-sign"
             type="button"
-            className="operator btn"
+            className={props.btnPlusStyle}
             value="+"
             onClick={props.plus}
           >
@@ -24,7 +25,7 @@ const Numberbtn = (props) => {
           <button
             id="math-sign"
             type="button"
-            className="operator btn"
+            className={props.btnSubtractStyle}
             value="-"
             onClick={props.subtract}
           >
@@ -33,7 +34,7 @@ const Numberbtn = (props) => {
           <button
             id="math-sign"
             type="button"
-            className="operator btn"
+            className={props.btnMultiplyStyle}
             value="*"
             onClick={props.multiply}
           >
@@ -42,7 +43,7 @@ const Numberbtn = (props) => {
           <button
             id="math-sign"
             type="button"
-            className="operator btn"
+            className={props.btnDivideStyle}
             value="/"
             onClick={props.divide}
           >
@@ -52,7 +53,7 @@ const Numberbtn = (props) => {
           <button
             type="button"
             value="7"
-            className="btn btn-dark waves-effect"
+            className="btn btn-outline-dark waves-effect"
             onClick={props.getInput}
           >
             7
@@ -60,7 +61,7 @@ const Numberbtn = (props) => {
           <button
             type="button"
             value="8"
-            className="btn btn-dark waves-effect"
+            className="btn btn-outline-dark wave-effect"
             onClick={props.getInput}
           >
             8
@@ -68,7 +69,7 @@ const Numberbtn = (props) => {
           <button
             type="button"
             value="9"
-            className="btn btn-dark waves-effect"
+            className="btn btn-outline-dark wave-effect"
             onClick={props.getInput}
           >
             9
@@ -77,7 +78,7 @@ const Numberbtn = (props) => {
           <button
             type="button"
             value="4"
-            className="btn btn-dark waves-effect"
+            className="btn btn-outline-dark wave-effect"
             onClick={props.getInput}
           >
             4
@@ -85,7 +86,7 @@ const Numberbtn = (props) => {
           <button
             type="button"
             value="5"
-            className="btn btn-dark waves-effect"
+            className="btn btn-outline-dark wave-effect"
             onClick={props.getInput}
           >
             5
@@ -93,7 +94,7 @@ const Numberbtn = (props) => {
           <button
             type="button"
             value="6"
-            className="btn btn-dark waves-effect"
+            className="btn btn-outline-dark wave-effect"
             onClick={props.getInput}
           >
             6
@@ -102,7 +103,7 @@ const Numberbtn = (props) => {
           <button
             type="button"
             value="1"
-            className="btn btn-dark waves-effect"
+            className="btn btn-outline-dark wave-effect"
             onClick={props.getInput}
           >
             1
@@ -110,7 +111,7 @@ const Numberbtn = (props) => {
           <button
             type="button"
             value="2"
-            className="btn btn-dark waves-effect"
+            className="btn btn-outline-dark wave-effect"
             onClick={props.getInput}
           >
             2
@@ -118,7 +119,7 @@ const Numberbtn = (props) => {
           <button
             type="button"
             value="3"
-            className="btn btn-dark waves-effect"
+            className="btn btn-outline-dark wave-effect"
             onClick={props.getInput}
           >
             3
@@ -127,14 +128,14 @@ const Numberbtn = (props) => {
           <button
             type="button"
             value="0"
-            className="btn btn-dark waves-effect"
+            className="btn btn-outline-dark wave-effect"
             onClick={props.getInput}
           >
             0
           </button>
           <button
             type="button"
-            className="decimal function btn btn-dark"
+            className="decimal function btn btn-outline-dark"
             value="."
           >
             .
