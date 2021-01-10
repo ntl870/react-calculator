@@ -1,6 +1,5 @@
 import "./Numberbtn.css";
 import React from "react";
-
 const Numberbtn = (props) => {
   return (
     <div className="Numberbtn">
@@ -40,6 +39,7 @@ const Numberbtn = (props) => {
           >
             &times;
           </button>
+
           <button
             id="math-sign"
             type="button"
@@ -58,6 +58,7 @@ const Numberbtn = (props) => {
           >
             7
           </button>
+
           <button
             type="button"
             value="8"
@@ -135,8 +136,9 @@ const Numberbtn = (props) => {
           </button>
           <button
             type="button"
-            className="decimal function btn btn-outline-dark"
+            className="btn btn-outline-dark"
             value="."
+            onClick={props.getInput}
           >
             .
           </button>
@@ -144,6 +146,7 @@ const Numberbtn = (props) => {
             type="button"
             className="all-clear function btn btn-danger btn-sm"
             value="all-clear"
+            onClick={props.operatorClear}
           >
             AC
           </button>

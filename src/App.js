@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { Component } from "react";
-import Numberbtn from "./Components/Numberbtn";
+import Numberbtn from "./Components/Numberbtn/Numberbtn";
 
 class App extends Component {
   state = {
@@ -144,13 +144,28 @@ class App extends Component {
       } else {
         tempState.ans = Number(tempState.ans) / Number(tempState.temp);
       }
-      tempState.temp = 1;
+      tempState.temp = 0;
       tempState.divide = false;
       tempState.operating = false;
       this.setState({
         tempState,
       });
     }
+  };
+
+  operatorClear = () => {
+    let tempState = this.state;
+    this.AnsTemp = [];
+    tempState.temp = 0;
+    tempState.ans = 0;
+    tempState.operating = true;
+    tempState.plus = false;
+    tempState.subtract = false;
+    tempState.multiply = false;
+    tempState.divide = false;
+    this.setState({
+      tempState,
+    });
   };
 
   render() {
@@ -190,6 +205,7 @@ class App extends Component {
             subtract={this.operatorSubtract}
             multiply={this.operatorMultiply}
             divide={this.operatorDivide}
+            operatorClear={this.operatorClear}
             btnPlusStyle={this.operatorPlusStyle}
             btnSubtractStyle={this.operatorSubtractStyle}
             btnMultiplyStyle={this.operatorMultiplyStyle}
@@ -208,6 +224,7 @@ class App extends Component {
             subtract={this.operatorSubtract}
             multiply={this.operatorMultiply}
             divide={this.operatorDivide}
+            operatorClear={this.operatorClear}
             btnPlusStyle={this.operatorPlusStyle}
             btnSubtractStyle={this.operatorSubtractStyle}
             btnMultiplyStyle={this.operatorMultiplyStyle}
