@@ -150,7 +150,6 @@ const Numberbtn = (props) => {
           >
             AC
           </button>
-
           <button
             type="button"
             className="equal-sign operator btn btn-primary"

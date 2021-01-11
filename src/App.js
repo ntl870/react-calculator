@@ -16,10 +16,6 @@ class App extends Component {
   multiplyCount = 0;
   divideCount = 0;
   AnsTemp = [];
-  operatorPlusStyle = "btn btn-warning";
-  operatorSubtractStyle = "btn btn-warning";
-  operatorMultiplyStyle = "btn btn-warning";
-  operatorDivideStyle = "btn btn-warning";
 
   getInput = (e) => {
     let ButtonValue = e.target.value;
@@ -119,6 +115,7 @@ class App extends Component {
       tempState.temp = 0;
       tempState.plus = false;
       tempState.operating = false;
+      this.AnsTemp = [];
       this.setState({
         tempState,
       });
@@ -127,6 +124,7 @@ class App extends Component {
       tempState.temp = 0;
       tempState.subtract = false;
       tempState.operating = false;
+      this.AnsTemp = [];
       this.setState({
         tempState,
       });
@@ -135,6 +133,7 @@ class App extends Component {
       tempState.temp = 0;
       tempState.multiply = false;
       tempState.operating = false;
+      this.AnsTemp = [];
       this.setState({
         tempState,
       });
@@ -147,6 +146,7 @@ class App extends Component {
       tempState.temp = 0;
       tempState.divide = false;
       tempState.operating = false;
+      this.AnsTemp = [];
       this.setState({
         tempState,
       });
@@ -167,6 +167,11 @@ class App extends Component {
       tempState,
     });
   };
+  
+  operatorPlusStyle = "btn btn-warning";
+  operatorSubtractStyle = "btn btn-warning";
+  operatorMultiplyStyle = "btn btn-warning";
+  operatorDivideStyle = "btn btn-warning";
 
   render() {
     console.log(this.state);
